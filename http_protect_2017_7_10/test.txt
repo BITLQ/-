@@ -1,0 +1,98 @@
+main.cpp:7:1: warning: "MAX_EVENT_NUMBER" redefined
+main.cpp:4:1: warning: this is the location of the previous definition
+In file included from main.cpp:2:
+heap_timer.h:23: error: ‘BUFFER_SIZE’ was not declared in this scope
+heap_timer.h:39: error: ISO C++ forbids declaration of ‘client_datant’ with no type
+heap_timer.h:39: error: expected ‘;’ before ‘*’ token
+heap_timer.h:106: error: ‘heap_time’ has not been declared
+heap_timer.h: In constructor ‘time_heap::time_heap(heap_timer**, int, int)’:
+heap_timer.h:89: error: ‘precolate_down’ was not declared in this scope
+heap_timer.h: In member function ‘void time_heap::add_timer(int*)’:
+heap_timer.h:124: error: request for member ‘expire’ in ‘* timer’, which is of non-class type ‘int’
+heap_timer.h:130: error: cannot convert ‘int*’ to ‘heap_timer*’ in assignment
+In file included from main.cpp:2:
+heap_timer.h: In member function ‘void time_heap::tick()’:
+heap_timer.h:188: error: ‘class heap_timer’ has no member named ‘user_data’
+main.cpp: In function ‘void addfd(int, int)’:
+main.cpp:50: error: redefinition of ‘void addfd(int, int)’
+httpd.h:38: error: ‘void addfd(int, int)’ previously defined here
+main.cpp: In function ‘void sig_handler(int)’:
+main.cpp:61: error: ‘errno’ was not declared in this scope
+main.cpp: In function ‘void addsig(int)’:
+main.cpp:72: error: ‘struct sigaction’ has no member named ‘sa_flag’
+main.cpp: In function ‘void timer_handler()’:
+main.cpp:87: error: request for member ‘tick’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:126: error: ‘ret’ was not declared in this scope
+main.cpp:133: error: expected ‘;’ before ‘addsig’
+main.cpp:150: error: ‘errno’ was not declared in this scope
+main.cpp:150: error: ‘EINTR’ was not declared in this scope
+main.cpp:158: error: ‘evetns’ was not declared in this scope
+main.cpp:170: error: no matching function for call to ‘heap_timer::heap_timer()’
+heap_timer.h:31: note: candidates are: heap_timer::heap_timer(int)
+heap_timer.h:29: note:                 heap_timer::heap_timer(const heap_timer&)
+main.cpp:171: error: ‘class heap_timer’ has no member named ‘user_data’
+main.cpp:175: error: request for member ‘add_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp:218: warning: taking address of temporary
+main.cpp:225: error: request for member ‘del_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp:229: error: request for member ‘add_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+/home/test/http_copy/httpd.c: In function ‘void print_log(const char*, int)’:
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c: In function ‘int echo_error(int, int)’:
+/home/test/http_copy/httpd.c:104: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:108: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:112: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:116: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:120: warning: deprecated conversion from string constant to ‘char*’
+make: *** [httpd] Error 1
+main.cpp:7:1: warning: "MAX_EVENT_NUMBER" redefined
+main.cpp:4:1: warning: this is the location of the previous definition
+In file included from main.cpp:2:
+heap_timer.h:23: error: ‘BUFFER_SIZE’ was not declared in this scope
+heap_timer.h:39: error: ISO C++ forbids declaration of ‘client_datant’ with no type
+heap_timer.h:39: error: expected ‘;’ before ‘*’ token
+heap_timer.h:106: error: ‘heap_time’ has not been declared
+heap_timer.h: In constructor ‘time_heap::time_heap(heap_timer**, int, int)’:
+heap_timer.h:89: error: ‘precolate_down’ was not declared in this scope
+heap_timer.h: In member function ‘void time_heap::add_timer(int*)’:
+heap_timer.h:124: error: request for member ‘expire’ in ‘* timer’, which is of non-class type ‘int’
+heap_timer.h:130: error: cannot convert ‘int*’ to ‘heap_timer*’ in assignment
+In file included from main.cpp:2:
+heap_timer.h: In member function ‘void time_heap::tick()’:
+heap_timer.h:188: error: ‘class heap_timer’ has no member named ‘user_data’
+main.cpp: In function ‘void addfd(int, int)’:
+main.cpp:50: error: redefinition of ‘void addfd(int, int)’
+httpd.h:38: error: ‘void addfd(int, int)’ previously defined here
+main.cpp: In function ‘void sig_handler(int)’:
+main.cpp:61: error: ‘errno’ was not declared in this scope
+main.cpp: In function ‘void addsig(int)’:
+main.cpp:72: error: ‘struct sigaction’ has no member named ‘sa_flag’
+main.cpp: In function ‘void timer_handler()’:
+main.cpp:87: error: request for member ‘tick’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp: In function ‘int main(int, char**)’:
+main.cpp:126: error: ‘ret’ was not declared in this scope
+main.cpp:133: error: expected ‘;’ before ‘addsig’
+main.cpp:150: error: ‘errno’ was not declared in this scope
+main.cpp:150: error: ‘EINTR’ was not declared in this scope
+main.cpp:158: error: ‘evetns’ was not declared in this scope
+main.cpp:170: error: no matching function for call to ‘heap_timer::heap_timer()’
+heap_timer.h:31: note: candidates are: heap_timer::heap_timer(int)
+heap_timer.h:29: note:                 heap_timer::heap_timer(const heap_timer&)
+main.cpp:171: error: ‘class heap_timer’ has no member named ‘user_data’
+main.cpp:175: error: request for member ‘add_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp:218: warning: taking address of temporary
+main.cpp:225: error: request for member ‘del_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+main.cpp:229: error: request for member ‘add_timer’ in ‘timer_heap’, which is of non-class type ‘time_heap*’
+/home/test/http_copy/httpd.c: In function ‘void print_log(const char*, int)’:
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:10: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c: In function ‘int echo_error(int, int)’:
+/home/test/http_copy/httpd.c:104: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:108: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:112: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:116: warning: deprecated conversion from string constant to ‘char*’
+/home/test/http_copy/httpd.c:120: warning: deprecated conversion from string constant to ‘char*’
+make: *** [httpd] Error 1

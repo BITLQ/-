@@ -1,0 +1,5 @@
+#! /bin/bash
+
+LOG=`pwd`
+make clean;make;make output;
+echo "message >>${LOG}/log/message.log"
