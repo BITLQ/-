@@ -1,7 +1,0 @@
-rm -rf httpd output cgi_math; cd cgi; make clean; cd -
-make[1]: Entering directory `/home/test/http_protect/cgi'
-rm -f cgi_math
-make[1]: Leaving directory `/home/test/http_protect/cgi'
-/home/test/http_protect
-g++ main.cpp /home/test/http_protect/httpd.c -o httpd -lpthread
-g++ main.cpp /home/test/http_protect/httpd.c -o httpd -lpthread
