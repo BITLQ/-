@@ -1,11 +1,11 @@
 #include "threadpool.h"
 #include "heap_timer.h"
 #define MAX_FD 65535
-#define MAX_EVENT_NUMBER 1000
 #include<sys/epoll.h>
+#include<errno.h>
 #define FD_LIMIT 65535
 #define MAX_EVENT_NUMBER 1024
-#define TIMESLOT 20 
+#define TIMESLOT 100 
 
 static int pipefd[2];
 static int epollfd = 0;
@@ -51,17 +51,19 @@ static void time_addfd(int epollfd, int fd)
 {
     epoll_event event;
     event.data.fd = fd;
-    event.events = EPOLLIN | EPOLLET;
+    event.events = EPOLLIN;
     epoll_ctl(epollfd, EPOLL_CTL_ADD,fd, &event);
-    setnonblocking(fd);
+    //setnonblocking(fd);
 }
 
 void sig_handler(int sig)
 {
+    int save_errno = errno;
     printf("sig_handler %d is runnig\n", sig);
     int msg = sig;
     send(pipefd[1], (char*)&msg, 1, 0);
     printf("sig_handler is runned\n");
+    errno = save_errno;
 }
 
 void addsig(int sig)
@@ -126,7 +128,7 @@ int main(int argc, char* argv[])
 
     int ret = socketpair(AF_UNIX, SOCK_STREAM, 0, pipefd);
     assert(ret != -1);
-    setnonblocking(pipefd[1]);
+    //setnonblocking(pipefd[1]);
     time_addfd(epollfd, pipefd[0]);
 
 
@@ -170,6 +172,7 @@ int main(int argc, char* argv[])
                 timer->expire = cur + TIMESLOT;
                 timer_heap.add_timer(timer);
                 printf("new link add!\n");
+                pool->append(&conn(connfd));
             }
 
             /* 处理信号 */
@@ -194,7 +197,7 @@ int main(int argc, char* argv[])
                     printf("signal ret is %d\n", ret);
                     for(int i = 0; i < ret; i++)
                     {
-                        printf("signal is %s\n",signals[i]);
+                        printf("signal is %d\n",signals[i]);
                         switch(signals[i])
                         {
                             case SIGALRM:
@@ -213,7 +216,6 @@ int main(int argc, char* argv[])
             }
             else if(events[i].events & EPOLLIN)
             {
-                //缺少一个定时器
                 heap_timer* timer = users[sockfd].timer;
 
                 if(timer)
@@ -228,11 +230,6 @@ int main(int argc, char* argv[])
                     users[sockfd].timer = tmp;
                     timer_heap.add_timer(tmp);
                 }
-                else
-                {
-
-                }
-                pool->append(&conn(events[i].data.fd));
             }
         }
 
