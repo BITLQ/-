@@ -1,0 +1,15 @@
+<html>
+<head><h2>This is a web Servr!</h2></head>
+<body>
+	<p>hello wrld!</p>
+	<img src="/img/dog.jpg" alt="aaaa"><br/><br/><br/>
+	<form action="/weather_python/spider_main.py" method="POST">
+		<input type="submit" value="Query weather">
+	</form><br/br/>
+	<form action="/cgi_bin/cgi_math" method="POST">
+		data1: <input type="text" name="data1"><br/><br/><br/>
+		data2: <input type="text" name="data2">
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
