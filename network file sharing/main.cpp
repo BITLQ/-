@@ -218,12 +218,12 @@ int main(int argc, char* argv[])
             {
                 
                 char c;
-			    int ret = recv(sockfd,&c,1,MSG_PEEK);
+		int ret = recv(sockfd,&c,1,MSG_PEEK);
                 if(ret <= 0)
                 {
                     //关闭链接 
                     timer_heap.del_timer(users[sockfd].timer);
-                    cb_func(users[sockfd]);
+                    cb_func(&users[sockfd]);
                     users[sockfd].timer = NULL;
                 }
                 else
