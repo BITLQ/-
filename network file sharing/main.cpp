@@ -216,19 +216,32 @@ int main(int argc, char* argv[])
             }
             else if(events[i].events & EPOLLIN)
             {
-                heap_timer* timer = users[sockfd].timer;
-
-                if(timer)
+                
+                char c;
+			    int ret = recv(sockfd,&c,1,MSG_PEEK);
+                if(ret <= 0)
                 {
-                    heap_timer* tmp = NULL;
-                    tmp->expire = time(NULL) + TIMESLOT;
-                    tmp->cb_func = timer->cb_func;
-                    tmp->user_data = timer->user_data;
+                    //关闭链接 
+                    timer_heap.del_timer(users[sockfd].timer);
+                    cb_func(users[sockfd]);
+                    users[sockfd].timer = NULL;
+                }
+                else
+                {
+                     heap_timer* timer = users[sockfd].timer;
 
-                    timer_heap.del_timer(timer);
-                    printf("adjust timer once\n");
-                    users[sockfd].timer = tmp;
-                    timer_heap.add_timer(tmp);
+                     if(timer)
+                     {
+                         heap_timer* tmp = NULL;
+                         tmp->expire = time(NULL) + TIMESLOT;
+                         tmp->cb_func = timer->cb_func;
+                         tmp->user_data = timer->user_data;
+
+                         timer_heap.del_timer(timer);
+                         printf("adjust timer once\n");
+                         users[sockfd].timer = tmp;
+                         timer_heap.add_timer(tmp);
+                     }
                 }
             }
         }
