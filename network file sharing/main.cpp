@@ -172,7 +172,6 @@ int main(int argc, char* argv[])
                 timer->expire = cur + TIMESLOT;
                 timer_heap.add_timer(timer);
                 printf("new link add!\n");
-                pool->append(&conn(connfd));
             }
 
             /* 处理信号 */
@@ -241,6 +240,7 @@ int main(int argc, char* argv[])
                          printf("adjust timer once\n");
                          users[sockfd].timer = tmp;
                          timer_heap.add_timer(tmp);
+			 pool->append(&conn(connfd));
                      }
                 }
             }
