@@ -5,7 +5,7 @@
 #include<errno.h>
 #define FD_LIMIT 65535
 #define MAX_EVENT_NUMBER 1024
-#define TIMESLOT 100 
+#define TIMESLOT 75 
 
 static int pipefd[2];
 static int epollfd = 0;
@@ -87,7 +87,7 @@ static void Useage(const char* str)
 void timer_handler()
 {
     timer_heap.tick();
-    alarm(TIMESLOT);
+    alarm(10);
 }
 
 void cb_func(client_data* user_data)
@@ -140,7 +140,7 @@ int main(int argc, char* argv[])
 
     client_data* users = new client_data[FD_LIMIT];
     bool timeout = false;
-    alarm(TIMESLOT);  /* 定时 */
+    alarm(10);  /* 定时 */
 
     while(!stop_server)
     {
@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
                 users[connfd].sockfd = connfd;
 
                 /* 创建定时器，设置其回调函数与超时时间，然后绑定定时器与用户数据，最后将定时器添加到时间堆中； */
-                heap_timer* timer = new heap_timer(120);
+                heap_timer* timer = new heap_timer(75);
                 timer->user_data = &users[connfd];
                 timer->cb_func = cb_func;
                 time_t cur = time(NULL);
