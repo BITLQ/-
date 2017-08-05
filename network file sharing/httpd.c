@@ -101,23 +101,23 @@ int echo_error(int sock,int retcode)
 	switch(retcode)
 	{
 		case 400:
-			response = "HTTP/1.0 400 ERROR REQUEST\r\n";
+			response = "HTTP/1.1 400 ERROR REQUEST\r\n";
 			send_error(sock,response);
 			break;
 		case 403:
-			response = "HTTP/1.0 403 SERVER REFUSE REQUEST\r\n";
+			response = "HTTP/1.1 403 SERVER REFUSE REQUEST\r\n";
 			send_error(sock,response);
 			break;
 		case 404:
-			response = "HTTP/1.0 404 NOT FOUND\r\n";
+			response = "HTTP/1.1 404 NOT FOUND\r\n";
 			send_error(sock,response);
 			break;
 		case 500:
-			response = "HTTP/1.0 500 SERVER HAVE A ERROR\r\n";
+			response = "HTTP/1.1 500 SERVER HAVE A ERROR\r\n";
 			send_error(sock,response);
 			break;
 		case 503:
-			response = "HTTP/1.0 503 SERVER NOT TO BE USEING\r\n";
+			response = "HTTP/1.1 503 SERVER NOT TO BE USEING\r\n";
 			send_error(sock,response);
 			break;
 		default:
@@ -182,9 +182,11 @@ int cgi_deal(int sock, char* dir)
 
 	//Get 和 Post 的请求行和请求包头和空行都读取了；
 	//tell Mozila this is a html;
-	const char* status_line = "HTTP/1.0 200 OK\r\n";
+	const char* status_line = "HTTP/1.1 200 OK\r\n";
 	send(sock,status_line,strlen(status_line),0);
     //const char* content_type = "Content-Type:text/html;Charset=ISO-8859-1\r\n";
+    const char* connection = "Connection:keep-alive\r\n";
+    send(sock,connection,strlen(connection),0);
     const char* content_type = "Content-Type:text/html;Charset=utf-8\r\n";
     send(sock,content_type,strlen(content_type),0);
     const char* lang = "Accept-Language: zh-cn\r\n";
